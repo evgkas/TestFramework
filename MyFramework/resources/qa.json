@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ],
+  "proton.user.name": "BobWans@proton.me",
+  "proton.user.password": "#BobPassword",
+  "gmail.user.name": "AliceTestAcc4587@gmail.com",
+  "gmail.user.password": "#AlicePass"
+}
