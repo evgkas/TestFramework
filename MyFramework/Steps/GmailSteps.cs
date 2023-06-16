@@ -4,16 +4,14 @@ using OpenQA.Selenium;
 
 namespace MyFramework.Steps
 {
-    public class GmailSteps
-    {
-        private readonly IWebDriver driver;
+    public class GmailSteps : StepsAbstraction
+    {        
         private GmailMainPage mainPage;
         private GmailLoginPage loginPage;
         private GmailMessagePage messagePage;
 
-        public GmailSteps(IWebDriver driver)
-        {
-            this.driver = driver;            
+        public GmailSteps(IWebDriver driver) : base(driver)
+        {                      
             mainPage = new GmailMainPage(driver);
             loginPage = new GmailLoginPage(driver);
             messagePage = new GmailMessagePage(driver);

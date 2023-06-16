@@ -3,25 +3,18 @@ using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Gmail
 {
-    public class GmailLoginPage //: PageAbstraction
+    public class GmailLoginPage : PageAbstraction
     {        
-        private WebDriverWait wait;
-        private IWebDriver driver;
-
         private By emailField = By.CssSelector("input[type='email']");
         private By passwordField = By.CssSelector("input[type='password']");
         private By nextButton = By.CssSelector("div[id='identifierNext']");
         private By signInButton = By.CssSelector("div[id='passwordNext']");
         private By errorElement = By.Id("yDmH0d");
 
-        public GmailLoginPage(IWebDriver driver)  
-        {
-            this.driver = driver;            
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
+        public GmailLoginPage(IWebDriver driver) : base(driver) { }
 
         public void ToMainPage()
-        {
+        {            
             driver.Navigate().GoToUrl("https://www.gmail.com");
         }
 

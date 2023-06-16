@@ -3,20 +3,13 @@ using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Proton
 {
-    public class ProtonLoginPage
+    public class ProtonLoginPage : PageAbstraction
     {
-        private readonly IWebDriver driver;
-        private WebDriverWait wait;
-
         private By emailField = By.CssSelector("#username");
         private By passwordField = By.CssSelector("#password");
         private By submitButton = By.XPath("//*[@type='submit']");
 
-        public ProtonLoginPage(IWebDriver driver)
-        {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
+        public ProtonLoginPage(IWebDriver driver) : base(driver) { }
 
         public void ToMainPage()
         {

@@ -10,8 +10,8 @@ namespace MyFramework.Pages
 {
     public abstract class PageAbstraction
     {
-        internal protected IWebDriver driver;
-        internal protected WebDriverWait wait;
+        private protected IWebDriver driver;
+        private protected WebDriverWait wait;
 
         public PageAbstraction(IWebDriver driver) 
         {

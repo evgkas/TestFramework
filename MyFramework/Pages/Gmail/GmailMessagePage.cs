@@ -4,16 +4,12 @@ namespace MyFramework.Pages.Gmail
 {
     public class GmailMessagePage : GmailMainPage    //this page contains some elements (like menu) from main page 
     {
-        private IWebDriver driver;
         private By replyButton = By.XPath("//*[@class='ams bkH']");
         private By messageContent = By.XPath("//*[@class='a3s aiL ']/div[1]");
         private By textField = By.XPath("//*[@role='textbox']");    //input text
         private By sendMessageButton = By.XPath("//*[@id=':fl']");
 
-        public GmailMessagePage(IWebDriver driver) : base(driver)
-        {
-            this.driver = driver;            
-        }
+        public GmailMessagePage(IWebDriver driver) : base(driver) { }
 
         public string GetMessageText()
         {

@@ -3,22 +3,15 @@ using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Proton
 {
-    public class ProtonSettingsPage
+    public class ProtonSettingsPage : PageAbstraction
     {
-        private readonly IWebDriver driver;
-        private WebDriverWait wait;
-
         private By accountAndPasswordButtonLocator = By.XPath("//*[@title='Account and password']");
         private By accountNameLocator = By.XPath("//*[@class='text-ellipsis user-select mr-2']");
         private By editNameLocator = By.XPath("//*[@aria-label='Edit display name']");
         private By newNameFieldLocator = By.Id("displayName");
         private By submitButtonLocator = By.XPath("//*[@type='submit']");
 
-        public ProtonSettingsPage(IWebDriver driver)
-        {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
+        public ProtonSettingsPage(IWebDriver driver) : base(driver) { }
 
         public void GoToAccountAndPassword()
         {

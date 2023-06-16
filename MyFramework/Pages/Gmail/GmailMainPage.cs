@@ -3,19 +3,12 @@ using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Gmail
 {
-    public class GmailMainPage //: PageAbstraction
+    public class GmailMainPage : PageAbstraction
     {
-        internal IWebDriver driver;
-        internal WebDriverWait wait;
-        
         private By emailList = By.CssSelector("tr.zA");
         private By unreadMessagesLocator = By.CssSelector("span.bqe");
 
-        public GmailMainPage(IWebDriver driver)
-        {
-            this.driver = driver;            
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
+        public GmailMainPage(IWebDriver driver) : base(driver) { }
 
         public bool IsLoggedIn()
         {

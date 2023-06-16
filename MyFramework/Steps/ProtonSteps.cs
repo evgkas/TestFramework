@@ -5,17 +5,15 @@ using OpenQA.Selenium;
 
 namespace MyFramework.Steps
 {
-    public class ProtonSteps
-    {
-        private readonly IWebDriver driver;
+    public class ProtonSteps : StepsAbstraction
+    {        
         private ProtonLoginPage loginPage;
         private ProtonMessagePage messagePage;
         private ProtonSettingsPage settingsPage;
         private ProtonMainPage mainPage;
 
-        public ProtonSteps(IWebDriver driver)
-        {
-            this.driver = driver;          
+        public ProtonSteps(IWebDriver driver) : base(driver)
+        {         
             loginPage = new ProtonLoginPage(driver);
             messagePage = new ProtonMessagePage(driver);
             settingsPage = new ProtonSettingsPage(driver);

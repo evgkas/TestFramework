@@ -3,11 +3,8 @@ using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages
 {
-    public class ProtonMainPage
+    public class ProtonMainPage : PageAbstraction
     {
-        private readonly IWebDriver driver;
-        internal WebDriverWait wait;
-
         internal By newMessageButton = By.XPath("//*[@data-testid='sidebar:compose']");
         internal By toField = By.XPath("//*[@placeholder='Email address']");
         internal By subjectField = By.XPath("//*[@placeholder='Subject']");
@@ -17,11 +14,7 @@ namespace MyFramework.Pages
         private By goToSettingOptionLocator = By.LinkText("Go to settings");
         internal By openSettingsMenuButton = By.XPath("//*[@title='Open settings menu']");
 
-        public ProtonMainPage(IWebDriver driver)
-        {
-            this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
-        }
+        public ProtonMainPage(IWebDriver driver) : base(driver) { }
 
         public void ToMainPage()
         {
