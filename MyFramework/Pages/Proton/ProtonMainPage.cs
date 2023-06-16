@@ -8,20 +8,19 @@ namespace MyFramework.Pages
         private readonly IWebDriver driver;
         internal WebDriverWait wait;
 
-        internal By newMessageButton = By.XPath("//*[@class='px0-5 pb0-5 flex-item-noshrink']/button[1]");
+        internal By newMessageButton = By.XPath("//*[@data-testid='sidebar:compose']");
         internal By toField = By.XPath("//*[@placeholder='Email address']");
         internal By subjectField = By.XPath("//*[@placeholder='Subject']");
         internal By newEmailContentFrameLocator = By.XPath("//*[@title='Email composer']");
         internal By messageField = By.CssSelector("div[contenteditable='true']");
         internal By sendMessageButton = By.XPath("//*[@data-testid='composer:send-button']");
         private By goToSettingOptionLocator = By.LinkText("Go to settings");
-
         internal By openSettingsMenuButton = By.XPath("//*[@title='Open settings menu']");
 
         public ProtonMainPage(IWebDriver driver)
         {
             this.driver = driver;
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
         }
 
         public void ToMainPage()

@@ -12,8 +12,7 @@ namespace MyFramework.Pages.Gmail
 
         public GmailMessagePage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
-            //driver = Driver.DriverInstance.GetInstance();
+            this.driver = driver;            
         }
 
         public string GetMessageText()

@@ -21,12 +21,7 @@ namespace MyFramework.Steps
             settingsPage = new ProtonSettingsPage(driver);
             mainPage = new ProtonMainPage(driver);
         }
-
-        //public void InitBrowser()
-        //{
-        //    driver = Driver.DriverInstance.GetInstance();
-        //}
-
+      
         public void CloseBrowser()
         {
             Driver.DriverInstance.CloseBrowser();

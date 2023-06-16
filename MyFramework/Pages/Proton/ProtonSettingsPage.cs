@@ -7,9 +7,9 @@ namespace MyFramework.Pages.Proton
     {
         private readonly IWebDriver driver;
         private WebDriverWait wait;
+
         private By accountAndPasswordButtonLocator = By.XPath("//*[@title='Account and password']");
         private By accountNameLocator = By.XPath("//*[@class='text-ellipsis user-select mr-2']");
-
         private By editNameLocator = By.XPath("//*[@aria-label='Edit display name']");
         private By newNameFieldLocator = By.Id("displayName");
         private By submitButtonLocator = By.XPath("//*[@type='submit']");

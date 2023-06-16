@@ -19,11 +19,6 @@ namespace MyFramework.Steps
             messagePage = new GmailMessagePage(driver);
         }
 
-        //public void InitBrowser()
-        //{
-        //    driver = Driver.DriverInstance.GetInstance();
-        //}
-
         public void CloseBrowser()
         {
             Driver.DriverInstance.CloseBrowser();

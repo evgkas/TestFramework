@@ -7,15 +7,13 @@ namespace MyFramework.Pages.Gmail
     {
         internal IWebDriver driver;
         internal WebDriverWait wait;
-        //Locators
+        
         private By emailList = By.CssSelector("tr.zA");
         private By unreadMessagesLocator = By.CssSelector("span.bqe");
 
-
         public GmailMainPage(IWebDriver driver)
         {
-            this.driver = driver;
-            //driver = Driver.DriverInstance.GetInstance();
+            this.driver = driver;            
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
