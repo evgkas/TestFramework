@@ -12,7 +12,7 @@ namespace MyFramework.Pages.Proton
 
         public ProtonMessagePage(IWebDriver driver) : base(driver)
         {
-            this.driver = driver;
+            this.driver = driver;           
         }
 
         public string GetMessageText()

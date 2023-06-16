@@ -15,7 +15,7 @@ namespace MyFramework.Tests
             {
                 logger.LogInformation("{TestName} started", nameof(LoginInvalidUsers_IsInvalidCredentialErrorDisplayedTrue));
                 gmailSteps.Login(user);                
-                Assert.True(gmailSteps.IsLoginErrorDispalayed());
+                Assert.True(gmailSteps.IsLoginErrorDispalayed());                
             }
 
             catch (Exception)

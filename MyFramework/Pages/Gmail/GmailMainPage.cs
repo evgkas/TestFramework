@@ -3,11 +3,10 @@ using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Gmail
 {
-    public class GmailMainPage
+    public class GmailMainPage //: PageAbstraction
     {
-        private IWebDriver driver;
+        internal IWebDriver driver;
         internal WebDriverWait wait;
-
         //Locators
         private By emailList = By.CssSelector("tr.zA");
         private By unreadMessagesLocator = By.CssSelector("span.bqe");
@@ -16,6 +15,7 @@ namespace MyFramework.Pages.Gmail
         public GmailMainPage(IWebDriver driver)
         {
             this.driver = driver;
+            //driver = Driver.DriverInstance.GetInstance();
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 

@@ -2,13 +2,15 @@
 using MyFramework.Model;
 using MyFramework.Service;
 using NLog.Extensions.Logging;
+using OpenQA.Selenium;
 
 namespace MyFramework.Tests
 {
     public abstract class BaseTest : IDisposable
     {
-        internal static Steps.GmailSteps gmailSteps = new();
-        internal static Steps.ProtonSteps protonSteps = new();
+        private protected IWebDriver driver;
+        internal static Steps.GmailSteps gmailSteps;
+        internal static Steps.ProtonSteps protonSteps;
         internal User gmailValidUser;
         internal User protonValidUser;
         protected static ILogger<BaseTest> logger;
@@ -16,16 +18,20 @@ namespace MyFramework.Tests
 
         public BaseTest()
         {
-            gmailSteps.InitBrowser();
+            //gmailSteps.InitBrowser();
+            this.driver = Driver.DriverInstance.GetInstance();
+            gmailSteps = new(driver);
+            protonSteps = new(driver);
+
             gmailValidUser = UserCreator.withGmailCredentials();
             protonValidUser = UserCreator.withProtonCredentials();
 
             logger = Logger.GetLogger<BaseTest>();
 
-            //if (!Directory.Exists(testScreenshotDirectory))
-            //{
-            //    Directory.CreateDirectory(testScreenshotDirectory);
-            //}
+            if (!Directory.Exists(testScreenshotDirectory))
+            {
+                Directory.CreateDirectory(testScreenshotDirectory);
+            }
         }
 
         public void Dispose()
@@ -44,7 +50,7 @@ namespace MyFramework.Tests
         public void ErrorScreenshot(string testName)
         {
             logger.LogError("{TestName} - Test failed", testName);
-            Utils.Screenshoter.Capture(gmailSteps.driver, testScreenshotDirectory, $"{testName}_Fail");
+            Utils.Screenshoter.Capture(testScreenshotDirectory, $"{testName}_Fail");
         }
     }
 }

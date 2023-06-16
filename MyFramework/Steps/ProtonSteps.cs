@@ -1,23 +1,35 @@
 ﻿using MyFramework.Model;
 using MyFramework.Pages;
 using MyFramework.Pages.Proton;
+using OpenQA.Selenium;
 
 namespace MyFramework.Steps
 {
-    public class ProtonSteps : StepsAbstraction
+    public class ProtonSteps
     {
+        private readonly IWebDriver driver;
         private ProtonLoginPage loginPage;
         private ProtonMessagePage messagePage;
         private ProtonSettingsPage settingsPage;
         private ProtonMainPage mainPage;
 
-        public ProtonSteps()
+        public ProtonSteps(IWebDriver driver)
         {
-            InitBrowser();
+            this.driver = driver;          
             loginPage = new ProtonLoginPage(driver);
             messagePage = new ProtonMessagePage(driver);
             settingsPage = new ProtonSettingsPage(driver);
             mainPage = new ProtonMainPage(driver);
+        }
+
+        //public void InitBrowser()
+        //{
+        //    driver = Driver.DriverInstance.GetInstance();
+        //}
+
+        public void CloseBrowser()
+        {
+            Driver.DriverInstance.CloseBrowser();
         }
 
         public void Login(User user)

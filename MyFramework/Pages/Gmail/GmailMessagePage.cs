@@ -2,10 +2,9 @@
 
 namespace MyFramework.Pages.Gmail
 {
-    public class GmailMessagePage : GmailMainPage    //this page contain some elements (like menu) from main page 
+    public class GmailMessagePage : GmailMainPage    //this page contains some elements (like menu) from main page 
     {
-        private readonly IWebDriver driver;
-
+        private IWebDriver driver;
         private By replyButton = By.XPath("//*[@class='ams bkH']");
         private By messageContent = By.XPath("//*[@class='a3s aiL ']/div[1]");
         private By textField = By.XPath("//*[@role='textbox']");    //input text
@@ -14,6 +13,7 @@ namespace MyFramework.Pages.Gmail
         public GmailMessagePage(IWebDriver driver) : base(driver)
         {
             this.driver = driver;
+            //driver = Driver.DriverInstance.GetInstance();
         }
 
         public string GetMessageText()
