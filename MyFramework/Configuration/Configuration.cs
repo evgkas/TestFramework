@@ -5,10 +5,8 @@ namespace MyFramework.Configuration
     public class Configuration
     {
         public static IConfiguration InitConfiguration()
-        {
-            string buildPath = Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(buildPath).Parent.Parent.FullName;
-            var configPath = Path.Combine(projectDirectory, "xunit.runner.json");
+        {                      
+            var configPath = Path.Combine(Environment.CurrentDirectory, "xunit.runner.json");
 
             var config = new ConfigurationBuilder()
                .AddJsonFile(configPath)
