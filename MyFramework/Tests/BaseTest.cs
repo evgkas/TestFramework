@@ -2,11 +2,15 @@
 using MyFramework.Model;
 using MyFramework.Service;
 using NLog.Extensions.Logging;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace MyFramework.Tests
 {
-    public abstract class BaseTest : IDisposable
+    public abstract class BaseTest
     {
         private protected IWebDriver driver;
         internal static Steps.GmailSteps gmailSteps;
@@ -16,12 +20,12 @@ namespace MyFramework.Tests
         protected static ILogger<BaseTest> logger;
         private string testScreenshotDirectory = "screenshots";
 
-        public BaseTest()
+        [SetUp]
+        public void BaseSetUp()
         {
-            //gmailSteps.InitBrowser();
-            this.driver = Driver.DriverInstance.GetInstance();
-            gmailSteps = new(driver);
-            protonSteps = new(driver);
+            driver = Driver.DriverInstance.GetInstance();
+            gmailSteps = new Steps.GmailSteps(driver);
+            protonSteps = new Steps.ProtonSteps(driver);
 
             gmailValidUser = UserCreator.withGmailCredentials();
             protonValidUser = UserCreator.withProtonCredentials();
@@ -34,7 +38,8 @@ namespace MyFramework.Tests
             }
         }
 
-        public void Dispose()
+        [TearDown]
+        public void BaseTearDown()
         {
             gmailSteps.CloseBrowser();
         }

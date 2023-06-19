@@ -27,7 +27,7 @@ namespace MyFramework.Driver
         private static IWebDriver CreateDriver()
         {
             IWebDriver driver;
-            switch (Configuration.Configuration.ReadBrowserTypeFromConfig())
+            switch (Configuration.Configuration.GetBrowserType())
             {
                 case BrowserType.EDGE:
                     driver = new EdgeDriver();

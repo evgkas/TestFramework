@@ -1,23 +1,22 @@
 using Microsoft.Extensions.Logging;
 using MyFramework.Model;
-
+using NUnit.Framework;
+using System;
 
 namespace MyFramework.Tests
 {
+    [TestFixture]
     public class GmailTests : BaseTest
     {
-
-        [Theory]
-        [MemberData(nameof(GmailInvalidUsers))]
+        [TestCaseSource(nameof(GmailInvalidUsers))]
         public void LoginInvalidUsers_IsInvalidCredentialErrorDisplayedTrue(User user)
         {
             try
             {
                 logger.LogInformation("{TestName} started", nameof(LoginInvalidUsers_IsInvalidCredentialErrorDisplayedTrue));
-                gmailSteps.Login(user);                
-                Assert.True(gmailSteps.IsLoginErrorDispalayed());                
+                gmailSteps.Login(user);
+                Assert.True(gmailSteps.IsLoginErrorDispalayed());
             }
-
             catch (Exception)
             {
                 ErrorScreenshot("GmailInvalidUsers");
@@ -25,7 +24,7 @@ namespace MyFramework.Tests
             }
         }
 
-        [Fact]
+        [Test]
         public void CorrectUserData_IsLoggedInTrue()
         {
             try
@@ -36,34 +35,33 @@ namespace MyFramework.Tests
             }
             catch (Exception)
             {
-                ErrorScreenshot("CorrectUserData_IsLoggedInTrue");                
+                ErrorScreenshot("CorrectUserData_IsLoggedInTrue");
                 throw;
             }
         }
 
-        [Fact]
+        [Test]
         public void IsReceivedEmailCompareToSent()
         {
             try
             {
                 logger.LogInformation("{TestName} started", nameof(IsReceivedEmailCompareToSent));
-                //Arrange
+                // Arrange
                 string sentMessage = Utils.StringUtils.GetRandomString(20);
 
-                //Act
+                // Act
                 protonSteps.Login(protonValidUser);
                 protonSteps.SendMessage("AliceTestAcc4587@gmail.com", "IsReceivedEmailCompareToSentTest", sentMessage);
-                Thread.Sleep(30000);    //time to receive message change
+                Thread.Sleep(30000); // time for receive mesage
 
                 gmailSteps.Login(gmailValidUser);
                 gmailSteps.Refresh();
                 gmailSteps.OpenMessage(1);
                 string receivedMessage = gmailSteps.GetCurrentMessageText();
 
-                //Assert
-                Assert.Equal(sentMessage, receivedMessage);                
+                // Assert
+                Assert.AreEqual(sentMessage, receivedMessage);
             }
-
             catch (Exception)
             {
                 ErrorScreenshot("IsReceivedEmailCompareToSent");

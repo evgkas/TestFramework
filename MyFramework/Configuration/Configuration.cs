@@ -14,7 +14,7 @@ namespace MyFramework.Configuration
             return config;
         }
 
-        public static BrowserType ReadBrowserTypeFromConfig()
+        public static BrowserType GetBrowserType()
         {
             var config = InitConfiguration();
             switch (config["Browser"])
@@ -30,8 +30,9 @@ namespace MyFramework.Configuration
 
         public static string GetEnvironmentName()
         {
-            var config = InitConfiguration();
-            return config["Environment"];
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            return environment;
         }
     }
 }
