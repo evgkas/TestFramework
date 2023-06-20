@@ -1,21 +1,6 @@
-﻿<TestSuite>
-	<TestAssembly>MyTestProject.dll</TestAssembly>
-	<TestCases>
-		<TestCase>
-			<TypeName>MyFramework.Tests.GmailTests</TypeName>
-			<MethodName>LoginInvalidUsers_IsInvalidCredentialErrorDisplayedTrue</MethodName>
-		</TestCase>
-		<TestCase>
-			<TypeName>MyFramework.Tests.GmailTests</TypeName>
-			<MethodName>CorrectUserData_IsLoggedInTrue</MethodName>
-		</TestCase>
-		<TestCase>
-			<TypeName>MyFramework.Tests.GmailTests</TypeName>
-			<MethodName>IsReceivedEmailCompareToSent</MethodName>
-		</TestCase>		
-		<TestCase>
-			<TypeName>MyFramework.Tests.ProtonTests</TypeName>
-			<MethodName>IsNewNameCompareToSent</MethodName>
-		</TestCase>
-	</TestCases>
-</TestSuite>
+﻿<NUnitProject>	
+	<TestSuite>
+		<TestAssembly path="MyFramework.dll" />		
+		<TestCase fullyQualifiedName="MyFramework.Tests.GmailTests.CorrectUserData_IsLoggedInTrue" />		
+	</TestSuite>
+</NUnitProject>

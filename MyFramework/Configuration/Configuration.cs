@@ -6,7 +6,7 @@ namespace MyFramework.Configuration
     {
         public static IConfiguration InitConfiguration()
         {                      
-            var configPath = Path.Combine(Environment.CurrentDirectory, "xunit.runner.json");
+            var configPath = Path.Combine(Environment.CurrentDirectory, "appConfig.json");
 
             var config = new ConfigurationBuilder()
                .AddJsonFile(configPath)
@@ -31,6 +31,11 @@ namespace MyFramework.Configuration
         public static string GetEnvironmentName()
         {
             string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            if(environment == null || environment == "")
+            {
+                environment = "dev";
+            }
 
             return environment;
         }
