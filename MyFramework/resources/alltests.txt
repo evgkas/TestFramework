@@ -1,0 +1,4 @@
+﻿MyFramework.Tests.GmailTests.CorrectUserData_IsLoggedInTrue
+MyFramework.Tests.GmailTests.LoginInvalidUsers_IsInvalidCredentialErrorDisplayedTrue
+MyFramework.Tests.GmailTests.IsReceivedEmailCompareToSent
+MyFramework.Tests.ProtonTests.IsNewNameCompareToSent

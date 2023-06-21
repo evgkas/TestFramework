@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using NUnit.Framework;
 
 namespace MyFramework.Configuration
 {
@@ -16,21 +17,22 @@ namespace MyFramework.Configuration
 
         public static BrowserType GetBrowserType()
         {
-            var config = InitConfiguration();
-            switch (config["Browser"])
+            string browser = TestContext.Parameters["browser"];
+
+            switch (browser.ToUpper())
             {
                 case "EDGE":
                     return BrowserType.EDGE;
-                case "CHROME":
-                    return BrowserType.CHROME;
-                default:
+                case "FIREFOX":
                     return BrowserType.FIREFOX;
+                default:
+                    return BrowserType.CHROME;
             }
         }
 
         public static string GetEnvironmentName()
         {
-            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            string environment = TestContext.Parameters["environment"];
 
             if(environment == null || environment == "")
             {

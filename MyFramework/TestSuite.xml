@@ -1,6 +1,0 @@
-﻿<NUnitProject>	
-	<TestSuite>
-		<TestAssembly path="MyFramework.dll" />		
-		<TestCase fullyQualifiedName="MyFramework.Tests.GmailTests.CorrectUserData_IsLoggedInTrue" />		
-	</TestSuite>
-</NUnitProject>
