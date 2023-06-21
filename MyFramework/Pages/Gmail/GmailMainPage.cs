@@ -62,5 +62,18 @@ namespace MyFramework.Pages.Gmail
             catch (WebDriverTimeoutException) { }
             return senderEmail;
         }
+
+        public bool IsThereUnreadMessage()
+        {
+            try
+            {
+                wait.Until(d => d.FindElement(unreadMessagesLocator));
+                return true;
+            }
+            catch (WebDriverTimeoutException) 
+            {
+                return false;
+            }
+        }       
     }
 }

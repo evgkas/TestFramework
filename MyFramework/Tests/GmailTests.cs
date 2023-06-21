@@ -46,20 +46,18 @@ namespace MyFramework.Tests
             try
             {
                 logger.LogInformation("{TestName} started", nameof(IsReceivedEmailCompareToSent));
-                // Arrange
+                
                 string sentMessage = Utils.StringUtils.GetRandomString(20);
-
-                // Act
+                                
                 protonSteps.Login(protonValidUser);
-                protonSteps.SendMessage("AliceTestAcc4587@gmail.com", "IsReceivedEmailCompareToSentTest", sentMessage);
-                Thread.Sleep(30000); // time for receive mesage
+                protonSteps.SendMessage("AliceTestAcc4587@gmail.com", "IsReceivedEmailCompareToSentTest", sentMessage);                
 
                 gmailSteps.Login(gmailValidUser);
-                gmailSteps.Refresh();
+                gmailSteps.WaitForNewMessage();
                 gmailSteps.OpenMessage(1);
                 string receivedMessage = gmailSteps.GetCurrentMessageText();
+                gmailSteps.Refresh();
 
-                // Assert
                 Assert.AreEqual(sentMessage, receivedMessage);
             }
             catch (Exception)

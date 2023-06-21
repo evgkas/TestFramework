@@ -58,5 +58,22 @@ namespace MyFramework.Steps
         {
             driver.Navigate().Refresh();
         }
+
+        public void WaitForNewMessage()
+        {
+            int requestCount = 0;
+
+            while (!mainPage.IsThereUnreadMessage())
+            {
+                Thread.Sleep(5000);
+                Refresh();
+                requestCount++;
+
+                if (requestCount >= 6)
+                {
+                    break; //6 iteraction. takes maximum 60 sec for wait = 10 sec
+                }
+            }
+        }
     }
 }
