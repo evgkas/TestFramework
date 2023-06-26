@@ -1,18 +1,17 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages
 {
     public class ProtonMainPage : PageAbstraction
     {
-        internal By newMessageButton = By.XPath("//*[@data-testid='sidebar:compose']");
-        internal By toField = By.XPath("//*[@placeholder='Email address']");
-        internal By subjectField = By.XPath("//*[@placeholder='Subject']");
-        internal By newEmailContentFrameLocator = By.XPath("//*[@title='Email composer']");
-        internal By messageField = By.CssSelector("div[contenteditable='true']");
-        internal By sendMessageButton = By.XPath("//*[@data-testid='composer:send-button']");
-        private By goToSettingOptionLocator = By.LinkText("Go to settings");
-        internal By openSettingsMenuButton = By.XPath("//*[@title='Open settings menu']");
+        private protected static By newMessageButton = By.XPath("//*[@data-testid='sidebar:compose']");
+        private protected static By toField = By.XPath("//*[@placeholder='Email address']");
+        private protected static By subjectField = By.XPath("//*[@placeholder='Subject']");
+        private protected static By newEmailContentFrameLocator = By.XPath("//*[@title='Email composer']");
+        private protected static By messageField = By.CssSelector("div[contenteditable='true']");
+        private protected static By sendMessageButton = By.XPath("//*[@data-testid='composer:send-button']");
+        private protected static By goToSettingOptionLocator = By.LinkText("Go to settings");
+        private protected static By openSettingsMenuButton = By.XPath("//*[@title='Open settings menu']");
 
         public ProtonMainPage(IWebDriver driver) : base(driver) { }
 
@@ -42,7 +41,7 @@ namespace MyFramework.Pages
             driver.SwitchTo().DefaultContent();
 
             driver.FindElement(sendMessageButton).Click();
-            Thread.Sleep(1500);    //message doesnt sends immediately. fast switching to another action may cansel sending
+            Thread.Sleep(1500);    //message doesnt sends immediately. fast switching to another action may cancel sending
         }
 
         public void OpenMessage(string messageSubject)

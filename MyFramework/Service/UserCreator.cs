@@ -43,7 +43,7 @@ namespace MyFramework.Service
 
         public static User withInvalidLogin()
         {
-            return new User("InvalidEmail@notexited.cc", gmailPassword);
+            return new User("InvalidEmail@notexisting.cc", gmailPassword);
         }
     }
 }

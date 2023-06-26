@@ -1,27 +1,23 @@
 ﻿using Microsoft.Extensions.Logging;
 using MyFramework.Model;
 using MyFramework.Service;
-using NLog.Extensions.Logging;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace MyFramework.Tests
 {
     public abstract class BaseTest
     {
         private protected IWebDriver driver;
-        internal static Steps.GmailSteps gmailSteps;
-        internal static Steps.ProtonSteps protonSteps;
-        internal User gmailValidUser;
-        internal User protonValidUser;
-        protected static ILogger<BaseTest> logger;
+        private protected static Steps.GmailSteps gmailSteps;
+        private protected static Steps.ProtonSteps protonSteps;
+        private protected static User gmailValidUser;
+        private protected static User protonValidUser;
+        private protected static ILogger<BaseTest> logger;
         private string testScreenshotDirectory = "screenshots";
 
         [SetUp]
-        public void BaseSetUp()
+        public void SetUp()
         {
             driver = Driver.DriverInstance.GetInstance();
             gmailSteps = new Steps.GmailSteps(driver);
@@ -39,7 +35,7 @@ namespace MyFramework.Tests
         }
 
         [TearDown]
-        public void BaseTearDown()
+        public void TearDown()
         {
             gmailSteps.CloseBrowser();
         }

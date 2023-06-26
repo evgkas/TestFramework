@@ -2,11 +2,6 @@
 using NLog;
 using NLog.Extensions.Logging;
 using NLog.Web;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyFramework.Service
 {
@@ -23,7 +18,6 @@ namespace MyFramework.Service
                     .SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
             });
 
-            //NLogBuilder.ConfigureNLog("nlog.config"); //take attention to path of config - устарело
             LogManager.Setup().LoadConfigurationFromAppSettings();
         }
 

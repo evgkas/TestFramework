@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using NUnit.Framework;
-using System;
 
 namespace MyFramework.Tests
 {

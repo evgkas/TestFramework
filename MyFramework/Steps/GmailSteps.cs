@@ -5,13 +5,13 @@ using OpenQA.Selenium;
 namespace MyFramework.Steps
 {
     public class GmailSteps : StepsAbstraction
-    {        
+    {
         private GmailMainPage mainPage;
         private GmailLoginPage loginPage;
         private GmailMessagePage messagePage;
 
         public GmailSteps(IWebDriver driver) : base(driver)
-        {                      
+        {
             mainPage = new GmailMainPage(driver);
             loginPage = new GmailLoginPage(driver);
             messagePage = new GmailMessagePage(driver);
@@ -31,7 +31,7 @@ namespace MyFramework.Steps
             {
                 loginPage.EnterPassword(user.GetPassword());
             }
-            catch (StaleElementReferenceException) { }
+            catch (Exception) { }
         }
 
         public bool IsLoginErrorDispalayed()
@@ -61,17 +61,23 @@ namespace MyFramework.Steps
 
         public void WaitForNewMessage()
         {
-            int requestCount = 0;
+            WaitForNewMessage(TimeSpan.FromSeconds(30));
+        }
+
+        public void WaitForNewMessage(TimeSpan timeToWait)
+        {
+            TimeSpan timeStep = TimeSpan.FromSeconds(5);
+            TimeSpan wholeTime = timeToWait;
 
             while (!mainPage.IsThereUnreadMessage())
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(timeStep);
                 Refresh();
-                requestCount++;
+                wholeTime -= timeStep;
 
-                if (requestCount >= 6)
+                if (wholeTime <= TimeSpan.FromSeconds(0))
                 {
-                    break; //6 iteraction. takes maximum 60 sec for wait = 10 sec
+                    break;
                 }
             }
         }

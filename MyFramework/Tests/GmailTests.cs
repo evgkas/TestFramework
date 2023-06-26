@@ -1,7 +1,6 @@
 using Microsoft.Extensions.Logging;
 using MyFramework.Model;
 using NUnit.Framework;
-using System;
 
 namespace MyFramework.Tests
 {
@@ -46,17 +45,17 @@ namespace MyFramework.Tests
             try
             {
                 logger.LogInformation("{TestName} started", nameof(IsReceivedEmailCompareToSent));
-                
+
                 string sentMessage = Utils.StringUtils.GetRandomString(20);
-                                
+
                 protonSteps.Login(protonValidUser);
-                protonSteps.SendMessage("AliceTestAcc4587@gmail.com", "IsReceivedEmailCompareToSentTest", sentMessage);                
+                protonSteps.SendMessage("AliceTestAcc4587@gmail.com", 
+                    $"IsReceivedEmailCompareToSentTest {Utils.StringUtils.GetRandomString(5)}", sentMessage);
 
                 gmailSteps.Login(gmailValidUser);
                 gmailSteps.WaitForNewMessage();
                 gmailSteps.OpenMessage(1);
-                string receivedMessage = gmailSteps.GetCurrentMessageText();
-                gmailSteps.Refresh();
+                string receivedMessage = gmailSteps.GetCurrentMessageText();                
 
                 Assert.AreEqual(sentMessage, receivedMessage);
             }

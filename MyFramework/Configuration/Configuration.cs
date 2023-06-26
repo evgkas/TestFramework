@@ -6,7 +6,7 @@ namespace MyFramework.Configuration
     public class Configuration
     {
         public static IConfiguration InitConfiguration()
-        {                      
+        {
             var configPath = Path.Combine(Environment.CurrentDirectory, "appConfig.json");
 
             var config = new ConfigurationBuilder()
@@ -18,6 +18,11 @@ namespace MyFramework.Configuration
         public static BrowserType GetBrowserType()
         {
             string browser = TestContext.Parameters["browser"];
+
+            if ((browser == null) || (browser == ""))
+            {
+                browser = "chrome";
+            }
 
             switch (browser.ToUpper())
             {
@@ -34,7 +39,7 @@ namespace MyFramework.Configuration
         {
             string environment = TestContext.Parameters["environment"];
 
-            if(environment == null || environment == "")
+            if ((environment == null) || (environment == ""))
             {
                 environment = "dev";
             }

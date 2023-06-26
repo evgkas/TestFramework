@@ -10,10 +10,10 @@ namespace MyFramework.Utils
             string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
             string fileName = $"{screenshotName}_{timestamp}.png";
             string filePath = Path.Combine(screenshotDirectory, fileName);
-            
+
             ITakesScreenshot screenshotDriver = (ITakesScreenshot)driver;
             Screenshot screenshot = screenshotDriver.GetScreenshot();
-            
+
             screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Png);
         }
     }

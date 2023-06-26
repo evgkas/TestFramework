@@ -6,20 +6,20 @@ using OpenQA.Selenium;
 namespace MyFramework.Steps
 {
     public class ProtonSteps : StepsAbstraction
-    {        
+    {
         private ProtonLoginPage loginPage;
         private ProtonMessagePage messagePage;
         private ProtonSettingsPage settingsPage;
         private ProtonMainPage mainPage;
 
         public ProtonSteps(IWebDriver driver) : base(driver)
-        {         
+        {
             loginPage = new ProtonLoginPage(driver);
             messagePage = new ProtonMessagePage(driver);
             settingsPage = new ProtonSettingsPage(driver);
             mainPage = new ProtonMainPage(driver);
         }
-      
+
         public void CloseBrowser()
         {
             Driver.DriverInstance.CloseBrowser();

@@ -1,13 +1,12 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Proton
 {
     public class ProtonLoginPage : PageAbstraction
     {
-        private By emailField = By.CssSelector("#username");
-        private By passwordField = By.CssSelector("#password");
-        private By submitButton = By.XPath("//*[@type='submit']");
+        private static By emailField = By.CssSelector("#username");
+        private static By passwordField = By.CssSelector("#password");
+        private static By submitButton = By.XPath("//*[@type='submit']");
 
         public ProtonLoginPage(IWebDriver driver) : base(driver) { }
 

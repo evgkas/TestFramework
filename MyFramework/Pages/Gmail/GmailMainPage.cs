@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace MyFramework.Pages.Gmail
 {
     public class GmailMainPage : PageAbstraction
-    {
-        private By emailList = By.CssSelector("tr.zA");
-        private By unreadMessagesLocator = By.CssSelector("span.bqe");
+    {        
+        private static By emailList = By.CssSelector("tr.zA");
+        private static By unreadMessagesLocator = By.CssSelector("span.bqe");
 
         public GmailMainPage(IWebDriver driver) : base(driver) { }
 
@@ -70,10 +69,10 @@ namespace MyFramework.Pages.Gmail
                 wait.Until(d => d.FindElement(unreadMessagesLocator));
                 return true;
             }
-            catch (WebDriverTimeoutException) 
+            catch (WebDriverTimeoutException)
             {
                 return false;
             }
-        }       
+        }
     }
 }

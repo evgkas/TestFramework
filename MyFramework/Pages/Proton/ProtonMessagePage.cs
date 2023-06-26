@@ -3,7 +3,7 @@
 namespace MyFramework.Pages.Proton
 {
     public class ProtonMessagePage : ProtonMainPage
-    {        
+    {
         //need to switch to emailContentFrame before work with message content (receivedEmailContent)
         private By receivedEmailContent = By.XPath("//*[@dir='ltr']");
         private By emailContentFrameLocator = By.XPath("//iframe[@title='Email content']");
